@@ -25,51 +25,51 @@ public class flow{
         Graph graph = new SingleGraph("G");
 
         //Création des noeuds
-        graph.addNode("Usine1" );
-        graph.addNode("Usine2" );
-        graph.addNode("PF1" );
-        graph.addNode("PF2" );
-        graph.addNode("PF3" );
-        graph.addNode("PF4" );
-        graph.addNode("PF5" );
-        graph.addNode("Client1" );
-        graph.addNode("Client2" );
-        graph.addNode("Client3" );
+        graph.addNode("n1" );
+        graph.addNode("n2" );
+        graph.addNode("n3" );
+        graph.addNode("n4" );
+        graph.addNode("n5" );
+        graph.addNode("n6" );
+        graph.addNode("n7" );
+        graph.addNode("n8" );
+        graph.addNode("n9" );
+        graph.addNode("n10" );
         graph.addNode("t" );
         graph.addNode("s" );
 
 
         //Création des arcs
-        graph.addEdge("s1","s", "Usine1",true);
-        graph.addEdge("s2","s", "Usine2",true);
+        graph.addEdge("s1","s", "n1",true);
+        graph.addEdge("s2","s", "n2",true);
+        
+        graph.addEdge("n1_n3","n1", "n3",true);
+        graph.addEdge("n1_n5","n1", "n5",true);
+        graph.addEdge("n1_n6","n1", "n5",true);
 
-        graph.addEdge("Usine1_1","Usine1", "PF1",true);
-        graph.addEdge("Usine1_2","Usine1", "PF2",true);
-        graph.addEdge("Usine1_3","Usine1", "PF3",true);
+        graph.addEdge("n2_n5","n2", "n5",true);
+        graph.addEdge("n2_n6","n3", "n6",true);
 
-        graph.addEdge("Usine2_1","Usine2", "PF2",true);
-        graph.addEdge("Usine2_2","Usine2", "PF3",true);
+        graph.addEdge("n3_n4","n3", "n4",true);
+        graph.addEdge("n3_n5","n3", "n5",true);
 
-        graph.addEdge("PF1_1","PF1", "PF4",true);
-        graph.addEdge("PF1_2","PF1", "PF2",true);
+        graph.addEdge("n5_n8","n5", "n8",true);
+        graph.addEdge("n5_n9","n5", "n9",true);
+        graph.addEdge("n5_n10","n5", "n10",true);
 
-        graph.addEdge("PF2_1","PF2", "Client1",true);
-        graph.addEdge("PF2_2","PF2", "Client2",true);
-        graph.addEdge("PF2_3","PF2", "Client3",true);
+        graph.addEdge("n6_n7","n6", "n7",true);
 
-        graph.addEdge("PF3_1","PF3", "PF5",true);
+        graph.addEdge("n4_n8","n4", "n8",true);
+        graph.addEdge("n4_n9","n4", "n9",true);
 
-        graph.addEdge("PF4_1","PF4", "Client1",true);
-        graph.addEdge("PF4_2","PF4", "Client2",true);
+        graph.addEdge("n7_n9","n7", "n9",true);
+        graph.addEdge("n7_n10","n7", "n10",true);
 
-        graph.addEdge("PF5_1","PF5", "Client2",true);
-        graph.addEdge("PF5_2","PF5", "Client3",true);
+        graph.addEdge("n8_t","n8", "t",true);
 
-        graph.addEdge("Client1_1","Client1", "t",true);
+        graph.addEdge("n9_t","n9", "t",true);
 
-        graph.addEdge("Client2_1","Client2", "t",true);
-
-        graph.addEdge("Client3_1","Client3", "t",true);
+        graph.addEdge("n10_t","n10", "t",true);
 
         //Affichage du graphe graphique
         System.setProperty("org.graphstream.ui", "swing");
@@ -79,36 +79,36 @@ public class flow{
         ford.init(graph, "s", "t");
 
         //On attribue à chaque arc sa capacité
-        ford.setCapacity(graph.getNode("s"),graph.getNode("Usine1"),35);
-        ford.setCapacity(graph.getNode("s"),graph.getNode("Usine2"),25);
+        ford.setCapacity(graph.getNode("s"),graph.getNode("n1"),35);
+        ford.setCapacity(graph.getNode("s"),graph.getNode("n2"),25);
 
-        ford.setCapacity(graph.getNode("Usine1"),graph.getNode("PF1"),20);
-        ford.setCapacity(graph.getNode("Usine1"),graph.getNode("PF2"),15);
-        ford.setCapacity(graph.getNode("Usine1"),graph.getNode("PF3"),12);
+        ford.setCapacity(graph.getNode("n1"),graph.getNode("n3"),20);
+        ford.setCapacity(graph.getNode("n1"),graph.getNode("n5"),15);
+        ford.setCapacity(graph.getNode("n1"),graph.getNode("n6"),12);
 
-        ford.setCapacity(graph.getNode("Usine2"),graph.getNode("PF2"),6);
-        ford.setCapacity(graph.getNode("Usine2"),graph.getNode("PF3"),22);
+        ford.setCapacity(graph.getNode("n2"),graph.getNode("n5"),6);
+        ford.setCapacity(graph.getNode("n2"),graph.getNode("n6"),22);
 
-        ford.setCapacity(graph.getNode("PF1"),graph.getNode("PF4"),15);
-        ford.setCapacity(graph.getNode("PF1"),graph.getNode("PF2"),10);
+        ford.setCapacity(graph.getNode("n3"),graph.getNode("n4"),15);
+        ford.setCapacity(graph.getNode("n3"),graph.getNode("n5"),10);
 
-        ford.setCapacity(graph.getNode("PF2"),graph.getNode("Client1"),10);
-        ford.setCapacity(graph.getNode("PF2"),graph.getNode("Client2"),15);
-        ford.setCapacity(graph.getNode("PF2"),graph.getNode("Client3"),15);
+        ford.setCapacity(graph.getNode("n5"),graph.getNode("n8"),10);
+        ford.setCapacity(graph.getNode("n5"),graph.getNode("n9"),15);
+        ford.setCapacity(graph.getNode("n5"),graph.getNode("n10"),15);
 
-        ford.setCapacity(graph.getNode("PF3"),graph.getNode("PF5"),22);
+        ford.setCapacity(graph.getNode("n6"),graph.getNode("n7"),22);
 
-        ford.setCapacity(graph.getNode("PF4"),graph.getNode("Client1"),7);
-        ford.setCapacity(graph.getNode("PF4"),graph.getNode("Client2"),10);
+        ford.setCapacity(graph.getNode("n4"),graph.getNode("n8"),7);
+        ford.setCapacity(graph.getNode("n4"),graph.getNode("n9"),10);
 
-        ford.setCapacity(graph.getNode("PF5"),graph.getNode("Client2"),10);
-        ford.setCapacity(graph.getNode("PF5"),graph.getNode("Client3"),10);
+        ford.setCapacity(graph.getNode("n7"),graph.getNode("n9"),10);
+        ford.setCapacity(graph.getNode("n7"),graph.getNode("n10"),10);
 
-        ford.setCapacity(graph.getNode("Client1"),graph.getNode("t"),15);
+        ford.setCapacity(graph.getNode("n8"),graph.getNode("t"),15);
 
-        ford.setCapacity(graph.getNode("Client2"),graph.getNode("t"),15);
+        ford.setCapacity(graph.getNode("n9"),graph.getNode("t"),15);
 
-        ford.setCapacity(graph.getNode("Client3"),graph.getNode("t"),20);
+        ford.setCapacity(graph.getNode("n10"),graph.getNode("t"),20);
 
 
         ford.compute();
